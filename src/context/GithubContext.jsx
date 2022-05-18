@@ -10,6 +10,11 @@ export const GithubPovider = ({ children }) => {
   const GITHUB_TOKEN = import.meta.env.VITE_APP_GITHUB_TOKEN;
 
   const searchUsers = async (text) => {
+    if (text.trim() === '') {
+      setUsers([]);
+      return;
+    }
+
     setLoading(true);
     const response = await fetch(`${GITHUB_URL}/search/users?q=${text}`, {
       headers: {
@@ -17,9 +22,10 @@ export const GithubPovider = ({ children }) => {
       },
     });
 
-    const data = await response.json();
+    const { items } = await response.json();
     setLoading(false);
-    setUsers(users);
+
+    setUsers(items);
   };
 
   return (

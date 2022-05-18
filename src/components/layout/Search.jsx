@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import GithubContext from '../../context/GithubContext';
+import SearchResults from './SearchResults';
 import './Search.scss';
 
 function Search() {
@@ -11,6 +12,8 @@ function Search() {
     searchUsers(e.target.value);
   };
 
+  if (loading) return <h3>Loading...</h3>;
+
   return (
     <div className="search">
       <input
@@ -20,6 +23,7 @@ function Search() {
         value={text}
         onChange={handleText}
       />
+      {users && users.length > 0 && <SearchResults users={users} />}
     </div>
   );
 }
