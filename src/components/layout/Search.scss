@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  align-items: center;
+  flex-direction: column;
 
   input {
     margin-top: 20px;

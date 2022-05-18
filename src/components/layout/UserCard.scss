@@ -1,0 +1,14 @@
+.user {
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+
+  img {
+    max-width: 100px;
+    height: 100px;
+    border-radius: 200px;
+  }
+}
