@@ -34,6 +34,7 @@ export const GithubPovider = ({ children }) => {
   };
 
   const getUser = async (login) => {
+    dispatch({ type: 'SET_LOADING' });
     const response = await fetch(`${GITHUB_URL}/users/${login}`, {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,

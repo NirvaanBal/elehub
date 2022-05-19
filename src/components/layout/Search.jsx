@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import GithubContext from '../../context/GithubContext';
 import SearchResults from '../SearchResults';
 import './Search.scss';
@@ -9,11 +9,8 @@ function Search() {
 
   const handleText = (e) => {
     setText(e.target.value);
+    searchUsers(e.target.value);
   };
-
-  useEffect(() => {
-    searchUsers(text);
-  }, [text]);
 
   return (
     <div className="search">
