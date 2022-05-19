@@ -1,4 +1,5 @@
-import UserCard from './UserCard';
+import UserCard from './layout/UserCard';
+import './SearchResults.scss';
 
 function SearchResults({ users }) {
   return (

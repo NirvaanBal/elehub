@@ -6,7 +6,7 @@ function UserCard({ user }) {
 
   return (
     <div className="user">
-      <img src={avatar_url} alt={login} />
+      <img loading="lazy" src={avatar_url} alt={login} />
 
       <div className="info">
         <h4>{login}</h4>

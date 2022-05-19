@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import GithubContext from '../../context/GithubContext';
-import SearchResults from './SearchResults';
+import SearchResults from '../SearchResults';
 import './Search.scss';
 
 function Search() {
