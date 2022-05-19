@@ -1,21 +1,27 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useReducer } from 'react';
+import GithubReducer from './GithubReducer';
 
 const GithubContext = createContext();
 
 export const GithubPovider = ({ children }) => {
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const initialState = {
+    users: [],
+    user: {},
+    loading: false,
+  };
+
+  const [state, dispatch] = useReducer(GithubReducer, initialState);
 
   const GITHUB_URL = import.meta.env.VITE_APP_GITHUB_URL;
   const GITHUB_TOKEN = import.meta.env.VITE_APP_GITHUB_TOKEN;
 
   const searchUsers = async (text) => {
     if (text.trim() === '') {
-      setUsers([]);
+      dispatch({ type: 'REMOVE_USERS' });
       return;
     }
 
-    setLoading(true);
+    dispatch({ type: 'SET_LOADING' });
     const response = await fetch(`${GITHUB_URL}/search/users?q=${text}`, {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
@@ -23,13 +29,22 @@ export const GithubPovider = ({ children }) => {
     });
 
     const { items } = await response.json();
-    setLoading(false);
 
-    setUsers(items);
+    dispatch({ type: 'SEARCH_USERS', payload: items });
   };
 
+  const getUser = async () => {};
+
   return (
-    <GithubContext.Provider value={{ users, loading, searchUsers }}>
+    <GithubContext.Provider
+      value={{
+        users: state.users,
+        user: state.user,
+        loading: state.loading,
+        searchUsers,
+        getUser,
+      }}
+    >
       {children}
     </GithubContext.Provider>
   );
