@@ -1,13 +1,17 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GithubPovider } from './context/GithubContext';
-import Search from './components/layout/Search';
+import Header from './components/layout/Header';
 
 function App() {
   return (
     <GithubPovider>
-      <div className="app">
-        <h1>Elehub</h1>
-        <Search />
-      </div>
+      <Router>
+        <div className="app">
+          <Routes>
+            <Route path="/" element={<Header />} />
+          </Routes>
+        </div>
+      </Router>
     </GithubPovider>
   );
 }
