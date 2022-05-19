@@ -15,6 +15,7 @@ A clean UI app built on top of Github API.
 - Context API
 - Sass
 - Vite
+- Vercel
 
 ## Raison d'être
 
