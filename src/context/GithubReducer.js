@@ -17,6 +17,12 @@ const GithubReducer = (state, action) => {
         loading: false,
         users: [],
       };
+    case 'GET_USER':
+      return {
+        ...state,
+        loading: false,
+        user: action.payload,
+      };
     default:
       return state;
   }

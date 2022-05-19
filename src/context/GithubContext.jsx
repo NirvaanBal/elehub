@@ -33,7 +33,17 @@ export const GithubPovider = ({ children }) => {
     dispatch({ type: 'SEARCH_USERS', payload: items });
   };
 
-  const getUser = async () => {};
+  const getUser = async (login) => {
+    const response = await fetch(`${GITHUB_URL}/users/${login}`, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+      },
+    });
+
+    const data = await response.json();
+
+    dispatch({ type: 'GET_USER', payload: data });
+  };
 
   return (
     <GithubContext.Provider
