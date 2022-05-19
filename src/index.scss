@@ -15,4 +15,8 @@ body {
 
 .app {
   padding: 50px;
+
+  @media (max-width: 657px) {
+    padding: 20px;
+  }
 }

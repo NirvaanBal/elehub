@@ -18,21 +18,21 @@ function User() {
 
   return (
     <div className="profile">
+      <Link to="/">
+        <FaArrowLeft className="back" color="#000" />
+      </Link>
       <figure>
-        <Link to="/">
-          <FaArrowLeft className="back" color="#000" />
-        </Link>
         <img src={avatar_url} alt={login} />
-        <div className="info">
-          <h2>{name}</h2>
-          <p className="bio">{bio}</p>
-          <p className="location">{location}</p>
-          <p className="repos">Public Repositories: {public_repos}</p>
-          <a href={html_url} target="_blank">
-            Visit Github
-          </a>
-        </div>
       </figure>
+      <div className="info">
+        <h2>{name}</h2>
+        <p className="bio">{bio}</p>
+        <p className="location">{location}</p>
+        <p className="repos">Public Repositories: {public_repos}</p>
+        <a href={html_url} target="_blank">
+          Visit Github
+        </a>
+      </div>
     </div>
   );
 }
