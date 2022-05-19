@@ -10,7 +10,7 @@ function UserCard({ user }) {
 
       <div className="info">
         <h4>{login}</h4>
-        {/* <Link to={`users/${login}`}>Visit profile</Link> */}
+        <Link to={`users/${login}`}>Visit Profile</Link>
       </div>
     </div>
   );
